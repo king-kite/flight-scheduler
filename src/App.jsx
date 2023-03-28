@@ -3,6 +3,7 @@ import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
+import multiMonthPlugin from '@fullcalendar/multimonth';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import moment from 'moment';
 
@@ -79,7 +80,13 @@ function App() {
 		[]
 	);
 	const gridViews = React.useMemo(
-		() => ['timeGridDay', 'timeGridWeek', 'dayGridMonth'],
+		() => [
+			'timeGridDay',
+			'timeGridWeek',
+			'dayGridMonth',
+			'multiMonthYear',
+			'multiMonthYear',
+		],
 		[]
 	);
 
@@ -188,6 +195,7 @@ function App() {
 						<FullCalendar
 							ref={calendarRef}
 							plugins={[
+								multiMonthPlugin,
 								dayGridPlugin,
 								interactionPlugin,
 								listPlugin,
@@ -202,6 +210,10 @@ function App() {
 								// right: views.join(','), // user can switch between the two
 							}}
 							initialView={initialView}
+							// multiMonthMaxColumns={1}
+							// multiMonthMaxColumns={
+							// 	calendarType === 'grid' && currentView === 4 ? 1 : undefined
+							// }
 							weekends={true}
 							dateClick={(arg) => {
 								// bind with an arrow function
