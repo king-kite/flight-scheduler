@@ -1,9 +1,14 @@
 import React from 'react';
-import { FaSearchPlus, FaSearchMinus } from 'react-icons/fa';
+import {
+	FaArrowLeft,
+	FaArrowRight,
+	FaSearchPlus,
+	FaSearchMinus,
+} from 'react-icons/fa';
 
 // const views = ['dayGridMonth', 'timeGridWeek', 'timeGridDay'];
 
-function Header({ view, changeView, filter, setFilter }) {
+function Header({ view, changeView, filter, setFilter, prevNowNext }) {
 	const zoomIn = React.useCallback(() => {
 		switch (view) {
 			case 'timeGridDay':
@@ -57,6 +62,20 @@ function Header({ view, changeView, filter, setFilter }) {
 					}}
 					value={filter.to}
 				/>
+			</div>
+			<div className="prev-now-next">
+				<span onClick={() => prevNowNext('previous')}>
+					<FaArrowLeft className="prev-now-next-arrow" />
+				</span>
+				<span
+					onClick={() => prevNowNext('now')}
+					className="prev-now-next-title"
+				>
+					now
+				</span>
+				<span onClick={() => prevNowNext('next')}>
+					<FaArrowRight className="prev-now-next-arrow" />
+				</span>
 			</div>
 			<div className="change-view-icons-container">
 				<span onClick={zoomOut}>

@@ -85,6 +85,29 @@ function App() {
 		[calendarRef.current]
 	);
 
+	const prevNowNext = React.useCallback(
+		(direction) => {
+			if (calendarRef.current) {
+				const calendarApi = calendarRef.current.getApi();
+
+				switch (direction) {
+					case 'previous':
+						return calendarApi.prev();
+					case 'next':
+						return calendarApi.next();
+					case 'now':
+						return calendarApi.changeView(
+							'timeGridDay',
+							moment().format('YYYY-MM-DD HH:mm:ss')
+						);
+					default:
+						return;
+				}
+			}
+		},
+		[calendarRef.current]
+	);
+
 	return (
 		<React.Fragment>
 			<div>
@@ -111,6 +134,7 @@ function App() {
 				<div className="content">
 					<Header
 						changeView={changeView}
+						prevNowNext={prevNowNext}
 						view={currentView}
 						filter={filter}
 						setfilter={setFilter}

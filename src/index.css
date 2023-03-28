@@ -18,13 +18,13 @@ body {
   padding: 1rem 2rem;
 }
 
-.change-view-icon {
+.change-view-icon, .prev-now-next-arrow {
   color: var(--primary-color);
   height: 0.75rem;
   width: 0.75rem;
 }
 
-.change-view-icons-container {
+.change-view-icons-container, .prev-now-next {
   align-items: center;
   display: flex;
   margin-left: 1rem;
@@ -49,7 +49,7 @@ body {
   margin: 0 1rem;
 }
 
-.date-input label {
+.date-input label, .prev-now-next-title {
   color: var(--primary-color);
   font-weight: 600;
   margin-right: 0.5rem;
@@ -91,6 +91,19 @@ body {
 
 .menu-list li:hover, .menu-list li.active {
   background-color: var(--background-color);
+}
+
+.prev-now-next span {
+  cursor: pointer;
+}
+
+.prev-now-next-title {
+  cursor: pointer;
+  margin: 0 0.5rem !important;
+}
+
+.prev-now-next-title:hover, .prev-now-next span:hover {
+  opacity: 0.75;
 }
 
 .render-event-content {
