@@ -11,35 +11,37 @@ import {
 function Header({ type, changeType, zoom, filter, setFilter, prevNowNext }) {
 	return (
 		<div className="toolbar">
-			<div className="date-input">
-				<label htmlFor="from">from</label>
-				<input
-					type="date"
-					name="from"
-					id="from"
-					onChange={(e) => {
-						setFilter((prevState) => ({
-							...prevState,
-							from: e.target.value,
-						}));
-					}}
-					value={filter.from}
-				/>
-			</div>
-			<div className="date-input">
-				<label htmlFor="to">to</label>
-				<input
-					type="date"
-					name="to"
-					id="to"
-					onChange={(e) => {
-						setFilter((prevState) => ({
-							...prevState,
-							to: e.target.value,
-						}));
-					}}
-					value={filter.to}
-				/>
+			<div className="date-input-container">
+				<div className="date-input">
+					<label htmlFor="from">from</label>
+					<input
+						type="date"
+						name="from"
+						id="from"
+						onChange={(e) => {
+							setFilter((prevState) => ({
+								...prevState,
+								from: e.target.value,
+							}));
+						}}
+						value={filter.from}
+					/>
+				</div>
+				<div className="date-input">
+					<label htmlFor="to">to</label>
+					<input
+						type="date"
+						name="to"
+						id="to"
+						onChange={(e) => {
+							setFilter((prevState) => ({
+								...prevState,
+								to: e.target.value,
+							}));
+						}}
+						value={filter.to}
+					/>
+				</div>
 			</div>
 			<div className="prev-now-next">
 				<span onClick={() => prevNowNext('previous')}>
