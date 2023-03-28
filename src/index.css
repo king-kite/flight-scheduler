@@ -1,0 +1,101 @@
+:root {
+  --primary-color: rgb(65, 65, 221);
+  --background-color: rgb(171, 173, 173);
+  --white: rgb(225, 220, 220);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.calendar {
+  padding: 1rem 2rem;
+}
+
+.change-view-icon {
+  color: var(--primary-color);
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.change-view-icons-container {
+  align-items: center;
+  display: flex;
+  margin-left: 1rem;
+}
+
+.change-view-icons-container span {
+  color: var(--primary-color);
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.change-view-icons-container span:hover, .change-view-icon:hover {
+  opacity: 0.75;
+}
+
+.content {
+  margin-left: auto;
+  width: 80%;
+}
+
+.date-input {
+  margin: 0 1rem;
+}
+
+.date-input label {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+}
+
+.date-input input {
+  border: 1px solid rgb(244, 239, 239);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.menu {
+  background: var(--primary-color);
+  height: 100%;
+  min-height: 100vh;
+  position: fixed;
+  width: 20%;
+}
+
+.menu h3 {
+  color: var(--white);
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  margin: 1rem;
+  text-transform: uppercase;
+}
+
+.menu-list {
+  list-style-type: none;
+}
+
+.menu-list li {
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  text-transform: capitalize;
+}
+
+.menu-list li:hover, .menu-list li.active {
+  background-color: var(--background-color);
+}
+
+.toolbar {
+  background-color: var(--background-color);
+  display: flex;
+  padding: 1rem;
+}
+
+
