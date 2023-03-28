@@ -1,6 +1,7 @@
 :root {
   --primary-color: rgb(65, 65, 221);
   --background-color: rgb(171, 173, 173);
+  --success-color: rgb(73, 205, 73);
   --white: rgb(225, 220, 220);
 }
 
@@ -90,6 +91,34 @@ body {
 
 .menu-list li:hover, .menu-list li.active {
   background-color: var(--background-color);
+}
+
+.render-event-content {
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  color: var(--white);
+  padding: 0.25rem;
+  position: relative;
+  width: 100%;
+}
+
+.render-event-title, .render-event-time {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.render-event-title {
+  font-size: 12px;
+}
+
+.render-event-time {
+  font-size: 10px;
+}
+
+.render-event-content.published {
+  background-color: var(--success-color);
 }
 
 .toolbar {

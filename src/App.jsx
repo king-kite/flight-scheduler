@@ -140,7 +140,7 @@ function App() {
 											[]
 									  )
 							}
-							// eventContent={renderEventContent} // render custom component
+							eventContent={renderEventContent} // render custom component
 							// views={{
 							//   timeGridFourDay: {
 							//     type: 'timeGrid',
@@ -157,11 +157,17 @@ function App() {
 }
 
 function renderEventContent(eventInfo) {
+	const start = moment(eventInfo.event.start).format('HH:mma');
+	const end = moment(eventInfo.event.end).format('HH:mma');
 	return (
-		<>
-			<b>{eventInfo.timeText}</b>
-			<i>{eventInfo.event.title}</i>
-		</>
+		<div
+			className={`render-event-content ${
+				eventInfo.event.extendedProps.published ? 'published' : ''
+			}`}
+		>
+			<span className="render-event-title">{eventInfo.event.title}</span>
+			<span className="render-event-time">{`${start} - ${end}`}</span>
+		</div>
 	);
 }
 
