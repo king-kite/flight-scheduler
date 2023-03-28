@@ -63,9 +63,9 @@ function Header({ type, changeType, zoom, filter, setFilter, prevNowNext }) {
 					<FaSearchPlus className="change-view-icon" />
 				</span>
 			</div>
-			<div className="calendar-type-container">
+			<div className="calendar-type-button-container">
 				<button onClick={changeType}>
-					{type === 'list' ? 'grid view' : 'list view'}
+					set {type === 'list' ? 'grid view' : 'list view'}
 				</button>
 			</div>
 		</div>

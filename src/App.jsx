@@ -216,7 +216,8 @@ function App() {
 											[]
 									  )
 							}
-							eventContent={renderEventContent} // render custom component
+							eventContent={RenderEventContent} // render custom component
+							noEventsContent="No Flights Scheduled"
 							// eventDidMount={function (info) {
 							// 	if (info.event.extendedProps.published === 'done') {
 							// 		// // Change background color of row
@@ -245,9 +246,10 @@ function App() {
 	);
 }
 
-function renderEventContent(eventInfo) {
+function RenderEventContent(eventInfo) {
 	const start = moment(eventInfo.event.start).format('HH:mma');
 	const end = moment(eventInfo.event.end).format('HH:mma');
+
 	return (
 		<div
 			className={`render-event-content ${
