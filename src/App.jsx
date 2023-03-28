@@ -123,7 +123,7 @@ function App() {
 								left: 'prev,next',
 								center: 'title',
 								// right: 'dayGridMonth,timeGridWeek,timeGridDay,timeGridFourDay', // user can switch between the two
-								right: views.join(','), // user can switch between the two
+								// right: views.join(','), // user can switch between the two
 							}}
 							initialView={initialView}
 							weekends={true}
