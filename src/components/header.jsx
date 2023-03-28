@@ -6,31 +6,9 @@ import {
 	FaSearchMinus,
 } from 'react-icons/fa';
 
-// const views = ['dayGridMonth', 'timeGridWeek', 'timeGridDay'];
+// const views = ['dayGridMonth', 'listDay', 'listWeek', 'listMonth', 'listYear', 'timeGridWeek', 'timeGridDay'];
 
-function Header({ view, changeView, filter, setFilter, prevNowNext }) {
-	const zoomIn = React.useCallback(() => {
-		switch (view) {
-			case 'timeGridDay':
-				return changeView('timeGridWeek');
-			case 'timeGridWeek':
-				return changeView('dayGridMonth');
-			default:
-				return changeView('dayGridMonth');
-		}
-	}, [view, changeView]);
-
-	const zoomOut = React.useCallback(() => {
-		switch (view) {
-			case 'dayGridMonth':
-				return changeView('timeGridWeek');
-			case 'timeGridWeek':
-				return changeView('timeGridDay');
-			default:
-				return changeView('timeGridDay');
-		}
-	}, [view, changeView]);
-
+function Header({ type, changeType, zoom, filter, setFilter, prevNowNext }) {
 	return (
 		<div className="toolbar">
 			<div className="date-input">
@@ -78,12 +56,17 @@ function Header({ view, changeView, filter, setFilter, prevNowNext }) {
 				</span>
 			</div>
 			<div className="change-view-icons-container">
-				<span onClick={zoomOut}>
+				<span onClick={() => zoom('out')}>
 					<FaSearchMinus className="change-view-icon" />
 				</span>
-				<span onClick={zoomIn}>
+				<span onClick={() => zoom('in')}>
 					<FaSearchPlus className="change-view-icon" />
 				</span>
+			</div>
+			<div className="calendar-type-container">
+				<button onClick={changeType}>
+					{type === 'list' ? 'grid view' : 'list view'}
+				</button>
 			</div>
 		</div>
 	);
