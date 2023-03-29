@@ -94,7 +94,6 @@ function App() {
 		() => (calendarType === 'list' ? listViews[2] : gridViews[2]),
 		[calendarType, gridViews, listViews]
 	);
-	// const initialView = React.useMemo(() => calendarType === 'list' ? views[2] : views[2], [calendarType, views])
 
 	const zoom = React.useCallback(
 		(direction, date) => {
@@ -146,6 +145,15 @@ function App() {
 		},
 		[calendarRef.current, calendarType]
 	);
+
+	const calendarProps = React.useMemo(() => {
+		if (calendarType === 'grid' && currentView === 3) {
+			return {
+				multiMonthMaxColumns: 1,
+			};
+		}
+		return {};
+	}, [calendarType, currentView]);
 
 	return (
 		<React.Fragment>
@@ -202,19 +210,12 @@ function App() {
 								timeGridPlugin,
 							]}
 							headerToolbar={{
-								// left: 'prev,next',
 								left: '',
 								center: 'title',
 								right: '',
-								// right: 'dayGridMonth,timeGridWeek,timeGridDay,timeGridFourDay', // user can switch between the two
-								// right: views.join(','), // user can switch between the two
 							}}
 							initialView={initialView}
-							// multiMonthMaxColumns={1}
-							// multiMonthMaxColumns={
-							// 	calendarType === 'grid' && currentView === 4 ? 1 : undefined
-							// }
-							weekends={true}
+							// weekends={true}
 							dateClick={(arg) => {
 								// bind with an arrow function
 								console.log(arg);
@@ -230,26 +231,8 @@ function App() {
 							}
 							eventContent={RenderEventContent} // render custom component
 							noEventsContent="No Flights Scheduled"
-							// eventDidMount={function (info) {
-							// 	if (info.event.extendedProps.published === 'done') {
-							// 		// // Change background color of row
-							// 		// info.el.style.backgroundColor = 'red';
-
-							// 		// Change color of dot marker
-							// 		var dotEl =
-							// 			info.el.getElementsByClassName('fc-list-event-dot')[0];
-							// 		if (dotEl) {
-							// 			dotEl.style.backgroundColor = 'rgb(73, 205, 73)';
-							// 		}
-							// 	}
-							// }}
-							// views={{
-							//   timeGridFourDay: {
-							//     type: 'timeGrid',
-							//     duration: { days: 4 }
-							//   }
-							// }}
 							height="80vh"
+							{...calendarProps}
 						/>
 					</div>
 				</div>
