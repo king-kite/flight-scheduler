@@ -7,63 +7,12 @@ import multiMonthPlugin from '@fullcalendar/multimonth';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import moment from 'moment';
 
+import defaultPlanes from './planes';
 import Header from './components/header';
 
 function App() {
 	const calendarRef = React.useRef();
-	const [planes, setPlanes] = React.useState([
-		{
-			id: 'plane_1',
-			title: 'Plane 1',
-			flights: [
-				{
-					groupId: 'plane_1',
-					title: 'Flight One',
-					start: moment().format('YYYY-MM-DD HH:mm:ss'),
-					end: moment().add(1, 'hour').format('YYYY-MM-DD HH:mm:ss'),
-					extendedProps: {
-						published: false,
-					},
-				},
-			],
-		},
-		{
-			id: 'plane_2',
-			title: 'Plane 2',
-			flights: [
-				{
-					groupId: 'plane_2',
-					title: 'Flight Two',
-					start: moment().add(1, 'day').format('YYYY-MM-DD HH:mm:ss'),
-					end: moment()
-						.add(1, 'day')
-						.add(1, 'hour')
-						.format('YYYY-MM-DD HH:mm:ss'),
-					extendedProps: {
-						published: true,
-					},
-				},
-			],
-		},
-		{
-			id: 'plane_3',
-			title: 'Plane 3',
-			flights: [
-				{
-					groupId: 'plane_3',
-					title: 'Flight Three',
-					start: moment().add(3, 'day').format('YYYY-MM-DD HH:mm:ss'),
-					end: moment()
-						.add(3, 'day')
-						.add(1, 'hour')
-						.format('YYYY-MM-DD HH:mm:ss'),
-					extendedProps: {
-						published: false,
-					},
-				},
-			],
-		},
-	]);
+	const [planes, setPlanes] = React.useState(defaultPlanes);
 
 	const [plane, setPlane] = React.useState(null);
 
@@ -219,7 +168,11 @@ function App() {
 							dateClick={(arg) => {
 								// bind with an arrow function
 								console.log(arg);
-								alert(arg.dateStr);
+								alert(
+									'Do you wish to schulde a flight for this date: ' +
+										arg.dateStr +
+										' ?'
+								);
 							}}
 							events={
 								plane
